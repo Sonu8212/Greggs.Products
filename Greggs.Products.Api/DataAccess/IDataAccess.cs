@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Greggs.Products.Api.DataAccess;
 
-public interface IDataAccess<out T>
+public interface IDataAccess<T> // Removed 'out' to make T invariant
 {
-    IEnumerable<T> List(int? pageStart, int? pageSize);
+    Task<IEnumerable<T>> ListAsync(int pageStart, int pageSize, CancellationToken ct = default);
 }
