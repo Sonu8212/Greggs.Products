@@ -35,6 +35,7 @@ public class ProductController : ControllerBase
 
         var items = await _service.GetProductsAsync(pageStart, pageSize, cancellationToken);
         return Ok(items);
+
     }
 
     [HttpGet("euros")]
